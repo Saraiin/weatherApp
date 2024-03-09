@@ -4,8 +4,6 @@ import './index.css'
 
 function App() {
   const [zipCode, setZipCode] = useState('');
-  //const [data, setData]= useState({});
-  //const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   //const url =`https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&appid=37eb92036042dca5f24872b2f626e987`
   
@@ -40,16 +38,7 @@ function App() {
     const data = await response.json();
     return data;
   };
-  /*const searchLocation = () => {
-    if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
-        setData(response.data)
-        console.log(response.data)
-      })
-    }
-    
-  }*/
-  
+ 
 
 
   return (
@@ -63,22 +52,25 @@ function App() {
         />
       </div>
       <div className="container">
-        <div className="top">
-          <div className="location">{weatherData.name}</div>
-          <div className="temp">
-            <h1>{weatherData.main.temp}°F</h1>
-          </div>
+        {weatherData && weatherData.name && (
+           <div className="top">
+            <h1>{weatherData.name}°F</h1> : null}
+            <div className="location">{weatherData.name}</div>
+            <div className="temp">
+            {weatherData.main ? <h1>{weatherData.main.temp}°F</h1> : null}
+            </div>
           <div className="description">
             <p>clouds</p>
           </div>
         
         </div>
         <div className="bottom">
-          <div className="feels"><p className="bold">60°F</p><p>Feels Like</p></div>
+          <div className="feels"><p className="bold">{weatherData.weather[0].description}</p><p>Feels Like</p></div>
           <div className="humidity"><p className="bold">20%</p>
           <p>Humidity</p></div>
           <div className="wind"><p className='bold'>12 km/h</p><p>Wind Speed</p></div>
         </div>
+      )}
       </div>
      
     </div>
