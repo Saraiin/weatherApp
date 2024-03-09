@@ -5,6 +5,7 @@ import './index.css'
 function App() {
   const [zipCode, setZipCode] = useState('');
   const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
   //const url =`https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&appid=37eb92036042dca5f24872b2f626e987`
   
 
@@ -17,7 +18,9 @@ function App() {
     try {
       const coordinates = await fetchCoordinates(zipCode);
       const weather = await fetchWeather(coordinates.lat, coordinates.lon);
+      const forecast = await fetchForecast(coordinates.lat, coordinates.lon);
       setWeatherData(weather);
+      setForecastData(forecast);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -45,11 +48,21 @@ function App() {
     return data;
   };
  
+  const fetchForecast = async (lat, lon) => {
+    const apiKey = '37eb92036042dca5f24872b2f626e987';
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+    );
+    const data = await response.json();
+    return data;
+  };
+
 
 
   return (
     <div className="App">
       <div className="search">
+        <h2> Weather forecast</h2>
         <form onSubmit={handleSubmit}>
           <input
             value={zipCode}
@@ -93,6 +106,18 @@ function App() {
             </div>
           </div>
         )}
+        {forecastData && (
+          <div className="forecast">
+            {forecastData.list.map((item, index) => (
+              <div key={index} className="forecast-item">
+                <p>{item.dt_txt}</p>
+                <p>{item.main.temp}°C</p>
+                <p>{item.weather[0].description}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </div>
   )
