@@ -21,6 +21,7 @@ function App() {
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
+    console.log("geeeeeeeeeey")
   };
 
   const fetchCoordinates = async (zipCode) => {
