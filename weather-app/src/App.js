@@ -26,11 +26,16 @@ function App() {
   const fetchCoordinates = async (zipCode) => {
     const response = await fetch(`https://api.zippopotam.us/it/${zipCode}`);
     const data = await response.json();
-    return {
-      lat: data.places[0].latitude,
-      lon: data.places[0].longitude,
-    };
+    if (data.places && data.places.length > 0) {
+      return {
+        lat: data.places[0].latitude,
+        lon: data.places[0].longitude,
+      };
+    } else {
+      throw new Error('No coordinates found for the provided zip code');
+    }
   };
+  
 
   const fetchWeather = async (lat, lon) => {
     const apiKey = '37eb92036042dca5f24872b2f626e987';
@@ -54,33 +59,38 @@ function App() {
       <div className="container">
        {weatherData && weatherData.name && (
           <div className="top">
-            <div className="location">{weatherData.name}</div>
-              <div className="temp">
+            <div className="location">
+                <p>{weatherData.name} - {weatherData.sys.country}
+                </p>
+            </div>
+            <div className="temp">
                 {weatherData.main && <h1>{weatherData.main.temp}°F</h1>}
-              </div>
-              <div className="description">
-                <p>clouds</p>
-              </div>
+            </div>
+            <div className="description">
+              {weatherData && weatherData.weather && weatherData.weather.length > 0 && (
+              <p>{weatherData.weather[0].description}</p>
+              )}
+            </div>
           </div>
         )}
-      {weatherData && weatherData.weather && weatherData.weather.length > 0 && (
-        <div className="bottom">
-          <div className="feels">
-            <p className="bold">{weatherData.weather[0].description}</p>
-            <p>Feels Like</p>
+        {weatherData && weatherData.weather && weatherData.weather.length > 0 && (
+          <div className="bottom">
+            <div className="feels">
+              <p className="bold">{weatherData.main.feels_like}</p>
+              <p>Feels Like</p>
+            </div>
+            <div className="humidity">
+              <p className="bold">{weatherData.main.humidity}%</p>
+              <p>Humidity</p>
+            </div>
+            <div className="wind">
+              <p className='bold'>{weatherData.wind.speed}</p>
+              <p>Wind Speed</p>
+            </div>
           </div>
-          <div className="humidity">
-            <p className="bold">20%</p>
-            <p>Humidity</p>
-          </div>
-          <div className="wind">
-            <p className='bold'>12 km/h</p>
-            <p>Wind Speed</p>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
-  </div>
   )
 }
 
