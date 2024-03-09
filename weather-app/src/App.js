@@ -52,29 +52,37 @@ function App() {
         />
       </div>
       <div className="container">
-        {weatherData && weatherData.name && (
-           <div className="top">
-            <h1>{weatherData.name}°F</h1> : null}
+       {weatherData && weatherData.name && (
+          <div className="top">
             <div className="location">{weatherData.name}</div>
-            <div className="temp">
-            {weatherData.main ? <h1>{weatherData.main.temp}°F</h1> : null}
-            </div>
-          <div className="description">
-            <p>clouds</p>
+              <div className="temp">
+                {weatherData.main && <h1>{weatherData.main.temp}°F</h1>}
+              </div>
+              <div className="description">
+                <p>clouds</p>
+              </div>
           </div>
-        
-        </div>
+        )}
+      {weatherData && weatherData.weather && weatherData.weather.length > 0 && (
         <div className="bottom">
-          <div className="feels"><p className="bold">{weatherData.weather[0].description}</p><p>Feels Like</p></div>
-          <div className="humidity"><p className="bold">20%</p>
-          <p>Humidity</p></div>
-          <div className="wind"><p className='bold'>12 km/h</p><p>Wind Speed</p></div>
+          <div className="feels">
+            <p className="bold">{weatherData.weather[0].description}</p>
+            <p>Feels Like</p>
+          </div>
+          <div className="humidity">
+            <p className="bold">20%</p>
+            <p>Humidity</p>
+          </div>
+          <div className="wind">
+            <p className='bold'>12 km/h</p>
+            <p>Wind Speed</p>
+          </div>
         </div>
       )}
-      </div>
-     
     </div>
-  );
+  </div>
+  )
 }
+
 
 export default App;
