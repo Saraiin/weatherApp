@@ -49,12 +49,15 @@ function App() {
   return (
     <div className="App">
       <div className="search">
-        <input value={zipCode}
-        placeholder='Enter zip code'
-        type="text"
-        onChange={handleZipCodeChange}
-        onKeyPress={handleSubmit}
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            value={zipCode}
+            placeholder="Enter zip code"
+            type="text"
+            onChange={handleZipCodeChange}
+          />
+          <button type="submit">Search</button>
+        </form>
       </div>
       <div className="container">
        {weatherData && weatherData.name && (
