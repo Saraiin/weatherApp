@@ -132,7 +132,7 @@ function App() {
               <div key={index} className="forecast-item">
                 <p className='bold'>{item.date}</p>
                 <p>{item.temp}°C</p>
-                <p>{item.description}</p>
+                <p className="bold">{item.description}</p>
               </div>
             ))}
           </div>
