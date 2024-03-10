@@ -1,4 +1,6 @@
 <h1> Weather forecast </h1>
+<img href="https://github.com/Saraiin/weatherApp/blob/main/weather-app/src/assets/app1.png" width="400px" height="600px">
+
 
 <p>Simple responsive weather app</p>
 
