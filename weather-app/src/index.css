@@ -73,7 +73,7 @@ h2{
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  width: calc(100% - 2rem);
+  width: 85%;
   margin: 1rem auto;
   padding: 1rem;
   border-radius: 12px;
