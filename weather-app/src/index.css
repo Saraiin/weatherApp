@@ -133,15 +133,15 @@ h2{
 
 .forecast-item {
   flex: 1;
-  margin: 0 5px; /* Adjust margin as needed */
+  margin: 0 5px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
   color: #f8f8f8;
   background: rgba(255,255,255, 0.1);
-  width: 150px; /* Adjust the width as needed */
-  margin-right: 10px; /* Add some margin between items */
+  width: 150px; 
+  margin-right: 10px;
 }
 
 
@@ -150,7 +150,7 @@ h2{
   .container {
     max-width: 100%;
     height: auto;
-    top: 5%; /* Adjust top position as needed */
+    top: 5%; 
   }
   .forecast-item {
     width: 100%; 
