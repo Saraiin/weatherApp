@@ -60,10 +60,10 @@ function App() {
     const formattedForecast = {};
     forecastData.list.forEach((item) => {
       const date = new Date(item.dt_txt);
-      const dayName = date.toLocaleString('en-us', { weekday: 'short' });
+      //const dayName = date.toLocaleString('en-us', { weekday: 'short' });
       const day = date.getDate();
       const month = date.toLocaleString('en-us', { month: 'short' });
-      const key = `${dayName} ${day} ${month}`;
+      const key = `${day} ${month}`;
       if (!formattedForecast[key]) {
         formattedForecast[key] = {
           date: key,
@@ -130,7 +130,7 @@ function App() {
           <div className="forecast">
             {formatForecastData(forecastData).map((item, index) => (
               <div key={index} className="forecast-item">
-                <p>{item.date}</p>
+                <p className='bold'>{item.date}</p>
                 <p>{item.temp}°C</p>
                 <p>{item.description}</p>
               </div>

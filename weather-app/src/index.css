@@ -1,134 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
 
-* {
-  border-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  font-family: 'Outfit', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: url('./assets/pexels-eberhard-grossgasteiger-2310713.jpg') no-repeat center center/cover
+/* Styles for screens smaller than 600px (phones) */
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    height: auto;
+    top: 5%; /
+  .forecast-item {
+    width: 100%; 
+    margin-right: 0; 
+    margin-bottom: 10px; 
+  }
 }
 
-p {
-  font-size: 1.6rem;
-}
-h1 {
-  font-size: 6rem;
-}
-.App {
-  width: 100%;
-  height: 200vh;
-  position: relative;
-  background-color: rgba(0,0,0,0.4);
-  color: #FFF;
+/* Styles for screens between 601px and 1024px (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    height: auto;
+    top: 5%; 
+  }
 }
 
-.App:before {
-  content: '';
-  background: url('./assets/pexels-eberhard-grossgasteiger-2310713.jpg') no-repeat center center/cover;
-  position: absolue;
-  width: 100%;
-  height: 100%;
-  top:0;
-  left:0;
-  z-index: -1;
-}
-
-.container {
-  max-width: 700px;
-  height: 700px;
-  margin: auto;
-  padding: 0 1rem;
-  position: relative;
-  top: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content:space-between;
-
-}
-
-.App .top {
-  width: 100%;
-  margin: 1rem auto;
-}
-.App .description {
-  position: relative;
-  right: -90%;
-  transform-origin: 0 0;
-  transform: rotate(269deg);
-}
-
-.App .bottom {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 100%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(255,255,255, 0.2);
-
-}
-
-.bold{
-  font-weight: 700;
-}
-
-.App .search {
-  text-align: center;
-  padding: 1rem;
-  display: block;
-  position: relative;
-  /*flex-direction: column;*/
-  align-items: center;
-}
-.App input {
-  padding: 1rem;
-  font-size: 1.5rem;
-  border-radius: 25px;
-  border: 1px solid rgba(255,255,255, 0.8);
-  background: rgba(255,255,255, 0.1);
-  color: #f8f8f8; 
-  margin-bottom: 1rem;
-  display: block;
-  display: inline-block; 
-  width: auto;
-  max-width: 700;
-
-}
-.App button {
-  padding: .7rem 1.5;
-  font-size: 1.3rem;
-  border-radius: 25px;
-  border: 1px solid rgba(255,255,255, 0.8);
-  background: rgba(255,255,255, 0.1);
-  color: #f8f8f8;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  
-}
-::placeholder {
-  color: #f8f8f8;
-  text-align: center;
-}
-
-.forecast {
-  display: flex;
-}
-
-.forecast-item {
-  flex: 1;
-  margin: 0 5px; /* Adjust margin as needed */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
+/* Styles for screens larger than 1024px (desktops) */
+@media only screen and (min-width: 1025px) {
+  .container {
+    max-width: 700px;
+    height: 700px;
+    top: 10%; 
+  }
 }
