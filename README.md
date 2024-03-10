@@ -8,14 +8,14 @@
 <p></p>The app is developed using React.js.</p>
 
 <h2>✨ Getting Started</h2>
-- Make sure you already have Node.js and npm installed in your system.
-- You need an API key from OpenWeatherMap. After creating an account, grab your key.
-- Under the src directory, go to api/OpenWeatherService and replace WEATHER_API_KEY with your OpenWeatherMap API Key.
+- Make sure you already have Node.js and npm installed in your system.<br/>
+- You need an API key from OpenWeatherMap. After creating an account, grab your key.<br/>
+- Under the src directory, go to api/OpenWeatherService and replace WEATHER_API_KEY with your OpenWeatherMap API Key.<br/>
 
 
 <h2>💻: Install</h2>
-- Clone the repository:
-- git clone https://github.com/Saraiin/weatherApp.git
+- Clone the repository: <br>
+<b> git clone https://github.com/Saraiin/weatherApp.git</b><br/>
 - Install the packages using the command npm install
 
 <h2>📙 Used libraries</h2>
