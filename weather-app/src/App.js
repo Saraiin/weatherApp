@@ -89,7 +89,7 @@ function App() {
             type="text"
             onChange={handleZipCodeChange}
           />
-          <button type="submit">Search</button>
+          <button type="submit"><i className="fas fa-search"></i></button>
         </form>
       </div>
       <div className="container">
