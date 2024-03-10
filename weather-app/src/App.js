@@ -56,6 +56,25 @@ function App() {
     const data = await response.json();
     return data;
   };
+  const formatForecastData = (forecastData) => {
+    const formattedForecast = {};
+    forecastData.list.forEach((item) => {
+      const date = new Date(item.dt_txt);
+      const dayName = date.toLocaleString('en-us', { weekday: 'short' });
+      const day = date.getDate();
+      const month = date.toLocaleString('en-us', { month: 'short' });
+      const key = `${dayName} ${day} ${month}`;
+      if (!formattedForecast[key]) {
+        formattedForecast[key] = {
+          date: key,
+          temp: item.main.temp,
+          description: item.weather[0].description,
+        };
+      }
+    });
+    return Object.values(formattedForecast);
+  };
+
 
 
 
@@ -106,13 +125,14 @@ function App() {
             </div>
           </div>
         )}
+        
         {forecastData && (
           <div className="forecast">
-            {forecastData.list.map((item, index) => (
+            {formatForecastData(forecastData).map((item, index) => (
               <div key={index} className="forecast-item">
-                <p>{item.dt_txt}</p>
-                <p>{item.main.temp}°C</p>
-                <p>{item.weather[0].description}</p>
+                <p>{item.date}</p>
+                <p>{item.temp}°C</p>
+                <p>{item.description}</p>
               </div>
             ))}
           </div>
