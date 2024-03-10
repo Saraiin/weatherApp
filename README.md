@@ -9,8 +9,8 @@
 
 <h2>✨ Getting Started</h2>
 - Make sure you already have Node.js and npm installed in your system.<br/>
-- You need an API key from OpenWeatherMap. After creating an account, grab your key.
-- Replace API_KEY by your own key in src/App.js
+- You need an API key from OpenWeatherMap. After creating an account, grab your key.<br/>
+- Replace "apiKey" by your own key in src/App.js
 
 
 <h2>💻: Install</h2>
