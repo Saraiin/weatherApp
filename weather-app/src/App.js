@@ -100,7 +100,7 @@ function App() {
                 </p>
             </div>
             <div className="temp">
-                {weatherData.main && <h1>{weatherData.main.temp}°F</h1>}
+                {weatherData.main && <h1>{weatherData.main.temp.toFixed()}°C</h1>}
             </div>
             <div className="description">
               {weatherData && weatherData.weather && weatherData.weather.length > 0 && (
@@ -112,7 +112,7 @@ function App() {
         {weatherData && weatherData.weather && weatherData.weather.length > 0 && (
           <div className="bottom">
             <div className="feels">
-              <p className="bold">{weatherData.main.feels_like}</p>
+              <p className="bold">{weatherData.main.feels_like.toFixed()}</p>
               <p>Feels Like</p>
             </div>
             <div className="humidity">
@@ -120,7 +120,7 @@ function App() {
               <p>Humidity</p>
             </div>
             <div className="wind">
-              <p className='bold'>{weatherData.wind.speed}</p>
+              <p className='bold'>{weatherData.wind.speed.toFixed()}Km/h</p>
               <p>Wind Speed</p>
             </div>
           </div>
@@ -131,7 +131,7 @@ function App() {
             {formatForecastData(forecastData).map((item, index) => (
               <div key={index} className="forecast-item">
                 <p className='bold'>{item.date}</p>
-                <p>{item.temp}°C</p>
+                <p>{item.temp.toFixed()}°C</p>
                 <p className="bold">{item.description}</p>
               </div>
             ))}
