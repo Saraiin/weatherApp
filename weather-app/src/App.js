@@ -13,6 +13,7 @@ function App() {
     setZipCode(e.target.value);
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,9 +25,9 @@ function App() {
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
-    console.log("geeeeeeeeeey")
   };
 
+  // Function to fetch coordinates based on zip code
   const fetchCoordinates = async (zipCode) => {
     const response = await fetch(`https://api.zippopotam.us/it/${zipCode}`);
     const data = await response.json();
@@ -40,7 +41,7 @@ function App() {
     }
   };
   
-
+  // Function to fetch current weather data
   const fetchWeather = async (lat, lon) => {
     const apiKey = '37eb92036042dca5f24872b2f626e987';
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
@@ -48,6 +49,7 @@ function App() {
     return data;
   };
  
+  // Function to fetch forecast data
   const fetchForecast = async (lat, lon) => {
     const apiKey = '37eb92036042dca5f24872b2f626e987';
     const response = await fetch(
@@ -56,6 +58,8 @@ function App() {
     const data = await response.json();
     return data;
   };
+
+  // Function to format forecast data
   const formatForecastData = (forecastData) => {
     const formattedForecast = {};
     forecastData.list.forEach((item) => {
@@ -93,6 +97,7 @@ function App() {
         </form>
       </div>
       <div className="container">
+        {/* Render current weather data */}
        {weatherData && weatherData.name && (
           <div className="top">
             <div className="location">
@@ -125,7 +130,7 @@ function App() {
             </div>
           </div>
         )}
-        
+        {/* Render forecast data */}
         {forecastData && (
           <div className="forecast">
             {formatForecastData(forecastData).map((item, index) => (
